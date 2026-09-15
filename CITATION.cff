@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the manuscript using the preferred citation below. Licenses are scoped by LICENSE.md."
+title: "Bath dimension and initial entropy for closed repeated use of a quantum channel"
+authors:
+  - family-names: Douglas
+    given-names: Seth
+    email: seth.douglas@gmail.com
+license:
+  - CC-BY-4.0
+  - MIT
+preferred-citation:
+  type: unpublished
+  title: "Bath dimension and initial entropy for closed repeated use of a quantum channel"
+  authors:
+    - family-names: Douglas
+      given-names: Seth
+      email: seth.douglas@gmail.com
+  year: 2026
