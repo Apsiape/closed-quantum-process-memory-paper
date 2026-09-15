@@ -8,6 +8,9 @@ authors:
 license:
   - CC-BY-4.0
   - MIT
+version: 1.0.0
+doi: 10.5281/zenodo.22779673
+repository-code: https://github.com/Apsiape/closed-quantum-process-memory-paper
 preferred-citation:
   type: unpublished
   title: "Bath dimension and initial entropy for closed repeated use of a quantum channel"
@@ -16,3 +19,6 @@ preferred-citation:
       given-names: Seth
       email: seth.douglas@gmail.com
   year: 2026
+  version: 1.0.0
+  doi: 10.5281/zenodo.22779673
+  url: https://zenodo.org/records/22779673

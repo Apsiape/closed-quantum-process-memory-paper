@@ -76,9 +76,12 @@ rerun, and write new logs outside this distribution's checksummed files.
 
 ## Citation, licenses and provenance
 
-Use [CITATION.cff](CITATION.cff) for the manuscript citation. The initial public
-release is version 1.0.0; its DOI will be added after assignment. No affiliation
-or ORCID is asserted. The [Zenodo instructions](zenodo/README.md) explain the
+Use [CITATION.cff](CITATION.cff) for the manuscript citation. Version 1.0.0 is
+archived as [doi:10.5281/zenodo.22779673](https://doi.org/10.5281/zenodo.22779673).
+The [GitHub release](https://github.com/Apsiape/closed-quantum-process-memory-paper/releases/tag/v1.0.0)
+also provides the PDF directly. The release archive is immutable; subsequent
+citation-only updates on main do not change that deposited version.
+No affiliation or ORCID is asserted. The [Zenodo instructions](zenodo/README.md) explain the
 aggregate Other (Open) category and explicit scoped licenses used for GitHub
 ingestion. Separate records or DOIs are not required.
 

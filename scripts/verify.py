@@ -93,6 +93,9 @@ assert release["title"] == md.splitlines()[0].removeprefix("# ")
 assert release["creators"] == [{"name": "Douglas, Seth"}]
 assert release["upload_type"] == "publication" and release["publication_type"] == "preprint"
 assert all(term in release["description"] for term in ["CC-BY-4.0", "MIT", "partial"])
+citation = (root / "CITATION.cff").read_text(encoding="utf-8")
+assert citation.count("doi: 10.5281/zenodo.22779673") == 2
+assert "repository-code: https://github.com/Apsiape/closed-quantum-process-memory-paper" in citation
 for name in expected:
     path = root / name
     if path.suffix in {".md", ".tex", ".py", ".json", ".cff", ".txt"} and not name.startswith("LICENSES/"):
