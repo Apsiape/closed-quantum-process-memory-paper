@@ -87,7 +87,12 @@ assert hashlib.sha256(body.encode("utf-8")).hexdigest().upper() == mapping["tex_
 zenodo = (root / "zenodo/README.md").read_text(encoding="utf-8")
 assert "mixed-license-uploads" in zenodo and "CC BY 4.0" in zenodo and "MIT" in zenodo
 assert "Douglas, Seth" in zenodo and "seth.douglas@gmail.com" in zenodo
-assert not (root / ".zenodo.json").exists()
+release = json.loads((root / ".zenodo.json").read_text(encoding="utf-8"))
+assert release["license"] == "other-open"
+assert release["title"] == md.splitlines()[0].removeprefix("# ")
+assert release["creators"] == [{"name": "Douglas, Seth"}]
+assert release["upload_type"] == "publication" and release["publication_type"] == "preprint"
+assert all(term in release["description"] for term in ["CC-BY-4.0", "MIT", "partial"])
 for name in expected:
     path = root / name
     if path.suffix in {".md", ".tex", ".py", ".json", ".cff", ".txt"} and not name.startswith("LICENSES/"):

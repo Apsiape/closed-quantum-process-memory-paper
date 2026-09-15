@@ -30,14 +30,18 @@ Declare MIT for original code in ancillary/ and scripts/ and its accompanying
 software documentation. Include LICENSES/MIT.txt and the top-level LICENSE.md.
 Third-party dependencies and imported rights are not relicensed.
 
-The same combined archive is suitable for GitHub and manually described Zenodo
-staging. There is no root .zenodo.json: automatic multi-license ingestion has not
-been validated, so the license fields should be entered and checked in the UI.
-Dependencies and internal research reports are not included.
+The root .zenodo.json configures GitHub release ingestion as a preprint.
+Zenodo's importer accepts one license category; **Other (Open)** represents this
+mixed-license package, with CC-BY-4.0 and MIT file scopes explicitly stated in
+the description and notes. LICENSE.md and the full license texts remain
+authoritative; this category does not change or combine their legal terms.
+After ingestion, verify the displayed metadata. The editor can additionally
+display both scoped license entries. Dependencies and internal research reports
+are not included.
 
-Supply a genuine DOI, optional release version and actual publication date only
-when available. No affiliation or ORCID is supplied. Do not infer identifiers or
-a public release version from these local filenames.
+The initial public release is version 1.0.0. Supply a genuine DOI only after
+assignment. The publication date is assigned by ingestion. No affiliation or
+ORCID is supplied.
 
 Reference: https://help.zenodo.org/docs/deposit/describe-records/licenses/#mixed-license-uploads .
 Nothing here calls the API or creates a record.

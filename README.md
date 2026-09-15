@@ -76,11 +76,11 @@ rerun, and write new logs outside this distribution's checksummed files.
 
 ## Citation, licenses and provenance
 
-Use [CITATION.cff](CITATION.cff) for the manuscript citation. No DOI, repository
-URL, release version, affiliation or ORCID has been invented. The
-[Zenodo instructions](zenodo/README.md) explain how to declare both scoped
-licenses for one combined record. Separate records or DOIs are not required.
-Automatic multi-license ingestion is not assumed; there is no root .zenodo.json.
+Use [CITATION.cff](CITATION.cff) for the manuscript citation. The initial public
+release is version 1.0.0; its DOI will be added after assignment. No affiliation
+or ORCID is asserted. The [Zenodo instructions](zenodo/README.md) explain the
+aggregate Other (Open) category and explicit scoped licenses used for GitHub
+ingestion. Separate records or DOIs are not required.
 
 The manuscript and appendices are CC BY 4.0. Original Python/Lean code and its
 software documentation are MIT-licensed. Full texts are in LICENSES/; third-party
