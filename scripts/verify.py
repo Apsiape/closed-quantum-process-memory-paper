@@ -96,7 +96,7 @@ assert release["version"] == "1.1.0"
 assert all(term in release["description"] for term in ["CC-BY-4.0", "MIT", "partial", "1.1.0"])
 citation = (root / "CITATION.cff").read_text(encoding="utf-8")
 assert citation.count("version: 1.1.0") == 2
-assert citation.count("doi: 10.5281/zenodo.2277967") == 2
+assert citation.count("doi: 10.5281/zenodo.22788806") == 2
 assert "repository-code: https://github.com/Apsiape/closed-quantum-process-memory-paper" in citation
 for name in expected:
     path = root / name

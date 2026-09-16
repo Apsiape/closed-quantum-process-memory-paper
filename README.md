@@ -78,9 +78,9 @@ rerun, and write new logs outside this distribution's checksummed files.
 
 Use [CITATION.cff](CITATION.cff) for the manuscript citation. The concept DOI
 [10.5281/zenodo.22779672](https://doi.org/10.5281/zenodo.22779672) resolves to the
-latest archived version; version 1.0.0 is
-[doi:10.5281/zenodo.22779673](https://doi.org/10.5281/zenodo.22779673), and the
-version DOI of 1.1.0 is recorded in CITATION.cff once assigned. The
+latest archived version. Version 1.1.0 is
+[doi:10.5281/zenodo.22788806](https://doi.org/10.5281/zenodo.22788806); version
+1.0.0 is [doi:10.5281/zenodo.22779673](https://doi.org/10.5281/zenodo.22779673). The
 [GitHub releases](https://github.com/Apsiape/closed-quantum-process-memory-paper/releases)
 also provide each PDF directly. Release archives are immutable; subsequent
 citation-only updates on main do not change a deposited version. No affiliation
@@ -103,7 +103,9 @@ are ignored; modified sources require a regenerated manifest and renewed checks.
 
 ## Revision history
 
-- **1.1.0 (2026-09-16).** Proposition 7.5: the lower witness is now the exact
+- **1.1.0 (2026-09-16),
+  [doi:10.5281/zenodo.22788806](https://doi.org/10.5281/zenodo.22788806).**
+  Proposition 7.5: the lower witness is now the exact
   rational input diag(7/12, 5/12), giving `kappa >= H_2(7/12) - H_2(1/3) =
   0.061572`. Version 1.0.0 displayed `0.045566` for the maximally mixed input, a
   decimal rounded up from 0.0455659970..., so the stated lower bound exceeded

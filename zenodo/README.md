@@ -40,8 +40,8 @@ display both scoped license entries. Dependencies and internal research reports
 are not included.
 
 Version 1.1.0 (2026-09-16) supersedes 1.0.0 (2026-09-15); both are versions of
-one Zenodo concept record, 10.5281/zenodo.22779672. Supply a version DOI only
-after assignment. The publication date is assigned by ingestion. No affiliation
+one Zenodo concept record, 10.5281/zenodo.22779672. Version DOIs:
+10.5281/zenodo.22779673 (1.0.0) and 10.5281/zenodo.22788806 (1.1.0). The publication date is assigned by ingestion. No affiliation
 or ORCID is supplied.
 
 Reference: https://help.zenodo.org/docs/deposit/describe-records/licenses/#mixed-license-uploads .
