@@ -113,8 +113,8 @@ are ignored; modified sources require a regenerated manifest and renewed checks.
   proof from Definition 1.3, the derivations of the constants in the proof of
   Theorem 4.1 are written out (no constant changes), a small-error quantifier is
   added at the stability display, Theorem 2.1 is restated unconditionally, a
-  conclusion section and one related-work comparison (Kotowski and Kotowski) are
-  added, notation collisions are resolved (Slepian-Wolf receiver `N`, damping
+  conclusion section, one related-work comparison (Kotowski and Kotowski) and a
+  scope citation of the companion Schur-channel note are added, notation collisions are resolved (Slepian-Wolf receiver `N`, damping
   parameter `nu`), the exponents in Appendix A use parentheses instead of
   brackets, and two bibliography identifiers are corrected. No theorem statement
   changes. Three independent blind AI-session reviews of version 1.0.0 preceded

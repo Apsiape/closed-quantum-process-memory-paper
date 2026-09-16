@@ -39,7 +39,7 @@ assert len(labels) == len(set(labels)) and set(refs) <= set(labels)
 keys = re.findall(r"\\bibitem\{([^}]+)\}", tex)
 cites = {k.strip() for group in re.findall(r"\\cite(?:\[[^\]]*\])?\{([^}]+)\}", tex)
          for k in group.split(",")}
-assert len(keys) == len(set(keys)) == 34 and cites == set(keys)
+assert len(keys) == len(set(keys)) == 35 and cites == set(keys)
 assert len(re.findall(r"^\d+\. ", md, re.MULTILINE)) == len(keys)
 statements = set(re.findall(r"^(Theorem|Lemma|Proposition|Corollary|Definition) ([\dAB]+\.\d+)",
                             md, re.MULTILINE))
@@ -104,6 +104,6 @@ for name in expected:
         content = path.read_text(encoding="utf-8")
         assert all(line == line.rstrip() for line in content.splitlines()), name
 assert "HOLD" not in "\n".join(pages)
-print(f"PASS {len(expected)} hashes; complete proof; 23 statements; 34 references; {len(urls)} links; 29 pages")
+print(f"PASS {len(expected)} hashes; complete proof; 23 statements; 35 references; {len(urls)} links; 29 pages")
 print("PASS source provenance, clean metadata, scoped licenses and portable layout")
 print("PDF SHA256 " + sha(root / "manuscript.pdf"))

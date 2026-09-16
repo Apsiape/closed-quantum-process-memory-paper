@@ -184,9 +184,9 @@ With D(rho,sigma)=||rho-sigma||_1/2, set
 The supremum includes all finite reference sizes. All-horizon means a device
 for every positive integer T, with error tending to zero along all integers.
 An achievable finite rate pair has actual limits log R_T/T->r and
-S(omega_T)/T->s; the rate region is the closure of these pairs. Along such a
-family R_T grows exponentially in T; r is the exponent per use, not a memory
-size. Logs and
+S(omega_T)/T->s; the rate region is the closure of these pairs. Thus
+R_T=2^(rT+o(T)): positive r means exponential growth, while r=0 permits
+subexponential growth. Logs and
 entropies are base two, S(rho)=-Tr rho log rho, with 0 log 0=0.
 An unconditional stopped experiment is covered by padding its continuation
 with dummy inputs. No bound conditional on a rare stopping outcome is promised.
@@ -835,10 +835,11 @@ kappa>=H_2(7/12)-H_2(1/3)>0 through the entropy-decrease budget credited
 there. The maximally mixed input, with Phi(I/2)=diag(5/8,3/8), gives only
 1-H_2(5/8)=0.04556..., and is not the maximiser of the bracket in
 Proposition 7.4; N. Mghirbi (private communication, 2026) observed that
-diag(3/5,2/5) already improves it to 0.061214. A numerical search over all
-qubit inputs, rerun by the script named in Appendix B.4, finds the maximum
+diag(3/5,2/5) already improves it to 0.061214. A numerical search over qubit
+inputs, rerun by the script named in Appendix B.4, finds the largest value
 0.061598 at diag(0.58671,0.41329), so the rational witness above is within
-0.00003 of the best bound this proposition can give for the channel.
+0.00003 of the largest value found numerically; the search is a diagonal grid
+with random general inputs and certifies no global maximum.
 
 For the upper bound, exhibit an exact collision. Take B=C^2, tau=diag(p,1-p),
 and the unitary U fixing |00> and |11> and acting on the ordered pair
@@ -864,7 +865,8 @@ For h, the minimal dilation of a pure input has system and environment with
 the same nonzero spectrum, so h>=S(Phi(|1><1|))=H_2(3/8), since
 Phi(|1><1|)=diag(3/8,5/8). A mixed input does better: at diag(1/3,2/3) the
 complementary output has entropy 1.148402 (also observed by N. Mghirbi; the
-numerical maximum is 1.148986 at diag(0.35586,0.64414)), so in fact h>1,
+largest value found numerically is 1.148986 at diag(0.35586,0.64414)), so in
+fact h>1,
 although the analytic bound suffices here. Strictness follows from H_2 being
 strictly increasing on (0,1/2): H_2(3/8)>H_2(1/4)=H_2(3/4)>1/2>1-H_2(3/4).
 
@@ -1105,9 +1107,11 @@ constructed, and no circuit-size or latency claim is made; the streaming
 realization for dephasing shows that some corners admit explicit efficient
 devices, and which channels do is open. The contract: immediate output return,
 one visit per input and a memoryless target are all load-bearing here. Devices
-that deliver outputs on a schedule rather than immediately, and testers with
-bounded persistent quantum memory rather than unrestricted references, are
-separate questions that this paper does not address.
+that deliver outputs on a schedule rather than immediately are studied in a
+companion note on Schur channels
+[Douglas, 2026](https://doi.org/10.5281/zenodo.22785669); testers with bounded
+persistent quantum memory rather than unrestricted references are a separate
+question that this paper does not address.
 
 ## AI assistance
 
@@ -1781,6 +1785,11 @@ coverage matrix and pinned dependency record give exact reproduction details.
     small ancilla*, [arXiv:2606.08784](https://arxiv.org/abs/2606.08784).
     Heralded single-use simulation with a small fresh ancilla; contract
     comparison only, in section 8.
+35. S. Douglas, *Closed Mixed-Apparatus Compression of Schur Channels:
+    Exact-Approximate Separation and Scheduled Delivery*,
+    [doi:10.5281/zenodo.22785669](https://doi.org/10.5281/zenodo.22785669) (2026).
+    Companion note on scheduled rather than immediate delivery; cited in
+    section 9 for scope only.
 
 The bibliography is a bounded ingredient and contract comparison, not an
 exhaustive literature survey. Imported primary theorems are cited at their

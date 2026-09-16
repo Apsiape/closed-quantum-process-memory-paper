@@ -263,6 +263,11 @@ coverage matrix and pinned dependency record give exact reproduction details.
     small ancilla*, [arXiv:2606.08784](https://arxiv.org/abs/2606.08784).
     Heralded single-use simulation with a small fresh ancilla; contract
     comparison only, in section 8.
+35. S. Douglas, *Closed Mixed-Apparatus Compression of Schur Channels:
+    Exact-Approximate Separation and Scheduled Delivery*,
+    [doi:10.5281/zenodo.22785669](https://doi.org/10.5281/zenodo.22785669) (2026).
+    Companion note on scheduled rather than immediate delivery; cited in
+    section 9 for scope only.
 
 The bibliography is a bounded ingredient and contract comparison, not an
 exhaustive literature survey. Imported primary theorems are cited at their
