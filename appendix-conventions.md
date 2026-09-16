@@ -21,6 +21,7 @@ the bibliography. It adds no claims.
 | r,s | Actual limits log R_T/T and S(omega_T)/T for vanishing-error all-horizon families. |
 | Entropy deficit | log R_T-S(omega_T); neither entropy nor log rank. |
 | Appendix A constants | May depend on a single fixed finite exact collision; uniform in tester, finite reference dimension and horizon. |
+| Reused letters | F is the inert purifier of the actual initializer (Definition 1.1) and, as F^n in Appendix A, the purifier of the comparison stock; the Slepian--Wolf receiver is written N. C names both a finite collision (U,tau) and the Slepian--Wolf sender register. k is the Choi rank; k_(rho,e) is the smoothed extension cost. nu in Proposition 7.5 is a damping parameter; gamma in Appendix A is the concentration slack. |
 
 The q=1 case is scalar and is directly realized without a bath. In
 Theorem 4.1 one uses the smallest POSITIVE target Choi eigenvalue, never a
@@ -87,7 +88,7 @@ dimensions are explicit in the scripts.
 | python block_invariant.py | 300 integer allocations, 1024-label preparation, joint-freshness and rare-stop negative controls, 12 states over 24 Cliffords. |
 | python encoder_only_merging.py | 36 partial-trace decoder-omission identity checks and 125 rational balances; seed 20260908; no decoupling or compiler validation. |
 | python rz_contract_negative_control.py | Exact rational q=R=2, T=1,...,12 marginal/joint separation; no random seed or numerical tolerance. |
-| python gad_interior_example.py | Proposition 7.5: trace preservation, exchange-block unitarity, 2003 inputs reproducing the channel, both analytic endpoints; seed 20260910; tolerance 1e-8. |
+| python gad_interior_example.py | Proposition 7.5: trace preservation, exchange-block unitarity, 2007 inputs reproducing the channel, both analytic endpoints, the exact rational lower witness, the attained upper witness, the mixed-input entropy-exchange value and diagonal grid searches for both; seed 20260910; tolerance 1e-8. |
 | BlockAccounting.lean (via documented wrapper) | Six elementary natural-number accounting lemmas only. |
 | ActiveBath.lean (via documented wrapper and pinned mathlib) | Finite complex density matrices and exact bath-only closing invariance for the complete user marginal. |
 
@@ -98,7 +99,7 @@ proves that partial trace and unitary closing preserve legal states, and proves
 exact invariance of the complete user marginal under a bath-only unitary,
 including arbitrary user-bath correlations and finite references. This supports
 only the closing identity in Appendix A.4, not construction of the compiler.
-Coverage is PARTIAL: entropy, trace distance and the asymptotic theorem are not
+Coverage is partial: entropy, trace distance and the asymptotic theorem are not
 formalized. No numerical telescope suite for Theorem 2.2 is claimed. The ancillary
 coverage matrix and pinned dependency record give exact reproduction details.
 
@@ -154,6 +155,7 @@ coverage matrix and pinned dependency record give exact reproduction details.
     Finite factorization closure is distinct from finite exact attainment.
 11. S. H. Lie, J. Son, P. Boes, N. H. Y. Ng and H. Wilming, *Thermal Operations
     from Informational Equilibrium*, [Phys. Rev. Lett. 137, 030403 (2026)](https://journals.aps.org/prl/pdf/10.1103/lm3h-c5f5),
+    [arXiv:2507.16637](https://arxiv.org/abs/2507.16637),
     published July 13, 2026, Proposition 6 and Eq. (12). Prior equilibrium/
     tracial-factorization interpretation; no quantitative companion modulus
     is adopted. The former arXiv v1 Proposition 4/Eqs. (13)--(15) numbering
@@ -167,7 +169,7 @@ coverage matrix and pinned dependency record give exact reproduction details.
     Definitions 3--4 and Theorem 3. Quantum interstep memory with free classical
     storage and local CPTP operations differs from all retained closed storage.
 14. B. Schumacher, *Sending entanglement through noisy quantum channels*,
-    [Phys. Rev. A 54, 2614--2628 (1996), primary PDF](https://www.epfl.ch/schools/ic/ipg/wp-content/uploads/2021/12/PhysRevA.54.2614.pdf),
+    [Phys. Rev. A 54, 2614--2628 (1996)](https://doi.org/10.1103/PhysRevA.54.2614),
     section V A, summary (iii), p. 2622. Established entropy exchange,
     maximized in Definition 1.3.
 15. N. Datta, C. Hirche and A. Winter, *Convexity and Operational Interpretation
@@ -257,6 +259,10 @@ coverage matrix and pinned dependency record give exact reproduction details.
     *How much randomness in a quantum process can be explained using memory?*,
     [arXiv:2608.25878v1](https://arxiv.org/html/2608.25878v1), section IV,
     Theorem 3 and Appendix B.5. Stationary recurrent CPTP memory comparison.
+34. M. Kotowski and M. Kotowski, *Randomized simulation of quantum channels using
+    small ancilla*, [arXiv:2606.08784](https://arxiv.org/abs/2606.08784).
+    Heralded single-use simulation with a small fresh ancilla; contract
+    comparison only, in section 8.
 
 The bibliography is a bounded ingredient and contract comparison, not an
 exhaustive literature survey. Imported primary theorems are cited at their

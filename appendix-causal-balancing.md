@@ -10,7 +10,7 @@ dimension and distances are written with an explicit norm.
 
 Lemma A.1. Let Lambda have finite output and H_Lambda=max_rho S(Lambda(rho)).
 There is a fixed spectral projector on n successively produced, untouched
-Lambda outputs with rank at most 2^[n(H_Lambda+gamma)] and rejected weight
+Lambda outputs with rank at most 2^(n(H_Lambda+gamma)) and rejected weight
 at most exp(-c_Lambda n gamma^2), uniformly over adaptive controllers and
 all finite reference dimensions. Deterministic spectral costs have zero loss.
 
@@ -64,12 +64,12 @@ before compression, because these operations do not touch spent outputs.
 Thus the same probability is the rejected weight of the unmeasured state
 at that boundary. No commutation with the later compressor or encoder is
 asserted or needed. Every
-accepted eigenstring has product zeta weight at least 2^[-n(H_Lambda+gamma)],
-so there are at most 2^[n(H_Lambda+gamma)] such strings. This proves the
+accepted eigenstring has product zeta weight at least 2^(-n(H_Lambda+gamma)),
+so there are at most 2^(n(H_Lambda+gamma)) such strings. This proves the
 claim without iid inputs or a union bound over users.
 
 For Lambda=Gamma_C, fresh tau cells therefore give a user-independent P_B
-on the spent B^n cells with rank<=2^[n(v+gamma)] and loss_B<=exp(-c_B n gamma^2).
+on the spent B^n cells with rank<=2^(n(v+gamma)) and loss_B<=exp(-c_B n gamma^2).
 All physical basis changes and compressors depend only on this fixed witness,
 n and gamma. The same lemma applies to untouched minimal environments of Phi.
 
@@ -89,8 +89,8 @@ Lemma A.2. In an exact comparison block there are commuting proof projectors
 on B^n,H,F^n whose success p is at least 1-loss_B-loss_E-loss_F, and whose
 normalized pure projection obeys
 
-`rank rho_hat_H<=K=2^[n(h+gamma)]`,
-`||rho_hat_(B^n H)||_infinity<=2^[-n(sigma-gamma)]/p`.
+`rank rho_hat_H<=K=2^(n(h+gamma))`,
+`||rho_hat_(B^n H)||_infinity<=2^(-n(sigma-gamma))/p`.
 
 Here H is a purification of the COMPLETE future-accessed exterior, excluding
 the independent seed and current source. No rank bound on its raw mixed
@@ -124,7 +124,7 @@ The positive eigenvalues of tau have finite logarithmic costs. The ordinary
 lower-tail bound for independent source eigenstrings supplies P_F accepting
 -log p_x>=n(sigma-gamma), with loss_F<=exp(-c_F n gamma^2), and
 
-`P_F tau_F^tensor n P_F<=2^[-n(sigma-gamma)] P_F`.
+`P_F tau_F^tensor n P_F<=2^(-n(sigma-gamma)) P_F`.
 
 Zero eigenvalues have zero probability and are omitted. Deterministic-cost
 tails have zero loss. P_B, P_H and P_F act on distinct registers and commute;
@@ -134,7 +134,7 @@ to the mixed-collision purification alongside a physical bath projector.
 For every vector on F, the quadratic form of the F marginal after projecting
 BH is at most its original value, because P_B P_H is a positive contraction.
 Thus that unnormalized F marginal is <=tau_F^tensor n. After P_F and
-normalization it is capped by 2^[-n(sigma-gamma)]/p. Purity transfers this
+normalization it is capped by 2^(-n(sigma-gamma))/p. Purity transfers this
 nonzero spectrum to B^n H. The normalized projected state has half distance
 sqrt(1-p) from the original pure state. No independence of spectral events
 is needed, and the factor 1/p cannot be suppressed.
@@ -224,8 +224,8 @@ In the eigenbasis of tau^tensor n, for strings with probabilities in
 [2^(-n(sigma+gamma)),2^(-n(sigma-gamma))], assign floor(2^mi p_x) distinct
 flat input labels to cell label x and different preparation-residue labels.
 Each fibre uses at most 2^(3n gamma+1)<2^rp labels. There are at most
-2^[n(sigma+gamma)] typical strings, so their total rounding deficit is
-at most 2^[n(sigma+gamma)-mi]<=2^(-n gamma). The desired subdistribution
+2^(n(sigma+gamma)) typical strings, so their total rounding deficit is
+at most 2^(n(sigma+gamma)-mi)<=2^(-n gamma). The desired subdistribution
 is pointwise below the target distribution. Send leftover labels injectively
 to unused cell/residue pairs; mi<=e+rp guarantees capacity. Although these
 labels can raise some marginal probabilities above target, total variation
@@ -274,7 +274,7 @@ exterior in the comparison state. Constants depend only on the fixed collision.
 
 Proof. Apply Lemma A.2 to the exact comparison block. After compression its
 projected W is pure and its normalized CH state has rank bound K and cap
-lambda=2^[-n(sigma-gamma)]/p. Before encoding the seed is independent of
+lambda=2^(-n(sigma-gamma))/p. Before encoding the seed is independent of
 CH jointly: preparation and service have not touched it, and the proof cuts
 can be chosen without referring to it. In particular the comparison input
 is pi_Z tensor rho_(source,exterior), with source and exterior also in

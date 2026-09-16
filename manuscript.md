@@ -13,11 +13,14 @@ no reset, discard, fresh ancilla or uncounted controller is available. This
 differs from the fixed-memory exact single-use marginal repeatability of Rybar
 and Ziman: we allow horizon-dependent hardware and require vanishing complete
 error against adaptive users. Active dimension and actual initial
-entropy form distinct resources. We characterize the rate region as s>=0,
-r+s>=h and r-s>=kappa, where h is maximum entropy exchange and kappa is a
-smoothed independent-reference extension cost whose exact fixed-input form is
-an affine transform of the zero-leakage quantum privacy funnel; the minimum
-dimension rate is (h+kappa)/2. The
+entropy form distinct resources. Writing r for the limiting bath dimension per
+use, log R_T/T, and s for the limiting initial entropy per use, S(omega_T)/T,
+we characterize the rate region as s>=0, r+s>=h and r-s>=kappa, where h is
+maximum entropy exchange and kappa is a smoothed independent-reference
+extension cost, an ordered limit that is not asserted to be computable, whose
+exact form at each fixed full-rank input is an affine transform of the
+zero-leakage quantum privacy funnel; the minimum dimension rate is
+(h+kappa)/2. The
 proof combines entropy budgets, a uniform collision-gain formulation, active
 support repair, and a closed adaptive implementation of encoder-only fully
 quantum Slepian--Wolf recycling. The implementation counts the entire bath,
@@ -33,7 +36,10 @@ and the counted adaptive implementation.
 A quantum channel is normally charged once. Fix a CPTP map Phi and a single
 use costs a dilation: an environment of dimension at most q^2 if it starts
 pure, or some other finite bath if it may start mixed. Serving T inputs in
-sequence is a different question, and the difference is not a factor of T. A
+sequence is a different question, and the difference is not merely a factor
+of T: the closed cost is still linear in T, but its coefficient, and the trade
+between dimension and initial entropy, are what a single-use dilation does not
+determine. A
 device that has already produced outputs must have somewhere to keep what
 producing them left behind. If it may reset its bath between visits, discard a
 spent cell, or draw a fresh ancilla, the question collapses to the single-use
@@ -98,7 +104,8 @@ already 1/2 at T=2. No resolution of their original question is claimed here.
 The contributions, in decreasing operational significance, are these. First,
 the characterization itself under the closed contract, together with its
 converse Theorem 2.2, which assumes no entropy-rate limit, constrains the same
-actual initialization through two separate legal experiments, and is effective.
+actual initialization through two separate legal experiments, and holds at
+every finite horizon with constants explicit in that horizon's own error.
 Second, the active support repair of Theorem 4.1: an approximate finite
 collision is corrected so that its Choi support lies inside the target's, with
 the positive initial spectrum unchanged and a gain penalty depending only on
@@ -123,7 +130,7 @@ auxiliary dimension, and no assertion of computability or of continuity in Phi;
 the thresholds in section 6 are finite but not effective. Proposition 7.4
 supplies a lower bound on kappa that is an optimization over the input space
 alone, and Proposition 7.5 brackets a single-qubit channel with 0<kappa<h, so
-the interior of the region is not empty and its two degenerate edges are not
+the non-degenerate case 0<kappa<h occurs and the two degenerate edges are not
 the only cases. Nothing here bounds circuit size or latency, requires the bath
 to be returned, or extends beyond one fixed memoryless channel visited once
 per input.
@@ -141,7 +148,9 @@ of a finite active bath B_T of dimension R_T, a density operator omega_T on it,
 and a unitary W_T:S B_T -> A B_T, with S and A identified between visits.
 All three may depend on Phi and T and are chosen before the user. Initially
 omega_T is in product with the user's entire state. A mathematical purifier F
-is inaccessible forever. Each visit applies this same W_T and hands A back
+is inaccessible forever; it is an analysis device only, the device never acts
+on it, so it is not charged, and the cost of a mixed omega_T enters through
+S(omega_T). Each visit applies this same W_T and hands A back
 before the next input arrives. All device seeds, clocks, stock, work wires,
 records and permanently parked residues are part of B_T. Offline preparation
 and unrestricted fixed hardware are allowed. No device reset, discard, fresh
@@ -170,7 +179,9 @@ With D(rho,sigma)=||rho-sigma||_1/2, set
 The supremum includes all finite reference sizes. All-horizon means a device
 for every positive integer T, with error tending to zero along all integers.
 An achievable finite rate pair has actual limits log R_T/T->r and
-S(omega_T)/T->s; the rate region is the closure of these pairs. Logs and
+S(omega_T)/T->s; the rate region is the closure of these pairs. Along such a
+family R_T grows exponentially in T; r is the exponent per use, not a memory
+size. Logs and
 entropies are base two, S(rho)=-Tr rho log rho, with 0 log 0=0.
 An unconditional stopped experiment is covered by padding its continuation
 with dummy inputs. No bound conditional on a rare stopping outcome is promised.
@@ -180,7 +191,7 @@ is a different task.
 Definition 1.3 (intrinsic costs). For a minimal pure Stinespring dilation
 V:S -> A E of Phi, write Phi^c(rho)=Tr_A V rho V* and
 `h(Phi)=max_rho S(Phi^c(rho))`. This maximizes the established entropy exchange
-of [Schumacher, section V A, summary (iii), p. 2622](https://www.epfl.ch/schools/ic/ipg/wp-content/uploads/2021/12/PhysRevA.54.2614.pdf).
+of [Schumacher, section V A, summary (iii), p. 2622](https://doi.org/10.1103/PhysRevA.54.2614).
 Complementary dilations differ by environment isometries, so this number is
 independent of the minimal choice. Let
 `|Omega_q>=q^(-1/2) sum_i |i,i>` and
@@ -249,8 +260,8 @@ visit per input.
 
 ## 2. Main theorem and converse
 
-Theorem 2.1 (rate region). Assume Theorems 2.2, 3.1, 4.1 and 5.1.
-Then the closed region is
+Theorem 2.1 (rate region). By Theorems 2.2, 3.1, 4.1 and 5.1, proved below,
+the rate region of Definition 1.2 is exactly
 `s>=0, r+s>=h, r-s>=kappa`. The minimum
 dimension rate is `(h+kappa)/2`, attained with actual entropy `(h-kappa)/2` and
 a spectrum that is flat on its support. For q=1 all intrinsic costs and the minimum rate vanish.
@@ -459,10 +470,17 @@ in the global output; no pinching, measurement or discard occurs.
 With d_epsilon=2epsilon+epsilon^2, t_epsilon=C_Phi d_epsilon and
 a_epsilon=epsilon+t_epsilon/2+sqrt((t_epsilon+d_epsilon)/(1+t_epsilon)), the
 joint purified output distance is at most a_epsilon+2q sqrt(eta)/epsilon,
-uniformly over inputs. Taking epsilon=eta^(1/3) gives e_eta=O_Phi(eta^(1/6)).
-Indeed the good-input operator distance is at most a_epsilon, while the bad
-component of the same initial purification has vector norm at most
-q sqrt(eta)/epsilon; two isometries differ on it by at most twice that norm.
+uniformly over inputs. Here ||Delta||<=d_epsilon on the good sector because
+V(I x P)=U(I x P)-L_0(I x P) with U an isometry and ||L_0(I x P)||<=epsilon,
+so ||(I x P)(V*V-I)(I x P)||<=2epsilon+epsilon^2. The good-input operator
+distance is at most a_epsilon: on that sector
+V/sqrt(1+t_epsilon)-U=(V-U)/sqrt(1+t_epsilon)+(1/sqrt(1+t_epsilon)-1)U has
+norm at most epsilon+t_epsilon/2, since U is an isometry and
+1-1/sqrt(1+t)<=t/2, while the W block contributes at most
+sqrt((t_epsilon+d_epsilon)/(1+t_epsilon)). Taking epsilon=eta^(1/3) gives
+e_eta=O_Phi(eta^(1/6)). The bad component of the same initial purification
+has vector norm at most q sqrt(eta)/epsilon; two isometries differ on it by at
+most twice that norm.
 Pure-state half distance is bounded by vector distance. Thus cutoff coherences
 are controlled without removing them. At eta=0 retain the original collision.
 Both gains equal S(QA|F) on a q-dimensional input purification. Thus the
@@ -530,7 +548,8 @@ flag mixing, f_Theta(rho)<=log k, and f_C(rho)>=S(rho)-log q>=-log q give
 `f_exact(rho)<=f_C(rho)+beta_q(e_eta)+w_eta(log k+log q)`.
 
 The exact collision supplies an exactly feasible extension. Taking arbitrarily
-small optimization slack at each positive e therefore gives
+small optimization slack at each positive e below the Phi-dependent threshold
+of Theorem 4.1, applied at eta=e/ell, therefore gives
 
 `k_(rho,e)<=K0(rho)<=k_(rho,e)+beta_q(e_(e/ell))+w_(e/ell)(log k+log q)`.
 
@@ -574,8 +593,10 @@ prefix's error with disjoint parked residues. Proposition A.6 counts the
 clock, actual spectrum and every-horizon limit. All are proved in this paper.
 
 The encoder is the sender's unitary from fully quantum Slepian--Wolf:
-sender=C, retained share=M, message=G, receiver=F and reference=H.
-Its decoder acts on GF, so omitting that decoder leaves MH unchanged.
+sender=C, retained share=M, message=G, receiver=N and reference=H; the
+receiver is written N here to keep F for the purifiers of Definition 1.1 and
+Appendix A.
+Its decoder acts on GN, so omitting that decoder leaves MH unchanged.
 The physical device parks and counts G. The split and its half-sum rates
 are established prior ingredients, specifically Abeyesinghe et al.,
 Theorems IV.1--IV.2, Lemma IV.5 and Eq. (30), pp. 6--9, with the asymptotic
@@ -638,10 +659,12 @@ Hardware and its actual initializer are selected before the user for each T;
 no witness changes online. Each elementary collision implements EXACT Phi,
 so there is no accumulated T eta term. This proves c_seq=r0 with actual
 entropy rate s0. No effective thresholds or witness-size bound are claimed
-for this achievability half. The converse half is effective, and it is the
-half that constrains an actual device: for every finite horizon, Theorem 2.2's
-two inequalities hold with explicit constants in terms of that horizon's own
-error delta_T. Only the thresholds H_m above are non-effective.
+for this achievability half. The converse half is the half that constrains
+an actual device: for every finite horizon, Theorem 2.2's two inequalities
+hold with explicit constants in terms of that horizon's own error delta_T,
+although the extension-cost term k_(rho,delta_T) itself is an infimum that is
+not asserted to be computable. Only the thresholds H_m above are
+non-effective.
 
 The selected base family has P_T=J_T 2^K_T equal positive eigenvalues 1/P_T
 and R_T-P_T zeros. To reach 0<=s<=s0 put d=s0-s and
@@ -736,7 +759,9 @@ gives kappa>=log q, while kappa<=h gives equality. Specializing the preallocated
 cell construction of [Rybar and Ziman, section III](https://arxiv.org/pdf/0808.3851v1), preallocate T pure
 q-dimensional cells and swap each arriving input into its designated cell,
 returning |0>; retain all cells and count the pure clock. This exact device
-has log R=T log q+log(T+1) and S(omega)=0. No mixed-replacement or
+has log R=T log q+log(T+1) and S(omega)=0. Its bath grows with T, as it
+must: Theorem 2 of Rybar and Ziman excludes a fixed finite memory for this
+nonunital channel. No mixed-replacement or
 other companion classification is needed for this example.
 
 Proposition 7.4 (a lower bound on kappa over the input space alone). For
@@ -744,18 +769,33 @@ every channel Phi,
 
 `kappa(Phi)>=max_rho [S(rho)-S(Phi(rho))]`.
 
-Proof. The entropy-conservation and subadditivity step is the finite-memory
-budget of [Rybar and Ziman, section III, Eq. (3.7)](https://arxiv.org/pdf/0808.3851v1).
-Let C=(U,tau) be any finite EXACT collision for Phi. The state
+Proof. Fix rho>0 and any e-feasible extension sigma in Definition 1.3, with
+q>=2. The chain rule and the conditional form of Araki--Lieb give
+
+`S(QA|Z)=S(Q|Z)+S(A|QZ)>=S(rho)-S(sigma_A)`,
+
+using S(Q|Z)=S(rho) from the exact product sigma_QZ=rho^T x sigma_Z and
+S(A|QZ)>=-S(A). Since D(sigma_QA,chi_rho)<=e and Tr_Q chi_rho=Phi(rho), the
+marginal sigma_A is within half distance e of Phi(rho), so
+[Audenaert, Theorem 1, v1](https://arxiv.org/pdf/quant-ph/0610146v1) gives
+S(sigma_A)<=S(Phi(rho))+e log(q-1)+H_2(e). Hence
+k_(rho,e)>=S(rho)-S(Phi(rho))-e log(q-1)-H_2(e). Letting e->0 at fixed rho
+and then taking the supremum over full-rank rho gives
+kappa>=sup_(rho>0) [S(rho)-S(Phi(rho))], which equals the maximum over all
+states by continuity of the bracket and density of the full-rank states; the
+maximum exists by compactness. This uses neither Theorem 3.1 nor Theorem 4.1.
+
+The same bound holds for every finite EXACT collision C=(U,tau), by the
+entropy-conservation and subadditivity budget of
+[Rybar and Ziman, section III, Eq. (3.7)](https://arxiv.org/pdf/0808.3851v1):
 U(rho x tau)U* on A B is unitarily equivalent to rho x tau, so
 S(AB)=S(rho)+S(tau), while subadditivity gives
 S(AB)<=S(Phi(rho))+S(Gamma_C(rho)). Subtracting S(tau),
 
 `f_C(rho)>=S(rho)-S(Phi(rho))` for every rho,
 
-hence g_C>=max_rho [S(rho)-S(Phi(rho))], the maximum existing by continuity on
-the compact q-state space. Taking the infimum over exact collisions bounds
-kappa_exact, and Theorems 3.1 and 4.1 identify kappa_exact with kappa.
+hence g_C>=max_rho [S(rho)-S(Phi(rho))]. This second route bounds kappa_exact
+directly and reaches kappa only through Theorems 3.1 and 4.1.
 
 Unlike Definition 1.3, the right-hand side is an optimization over the
 q-dimensional state space alone: no auxiliary system, no smoothing and no
@@ -767,44 +807,61 @@ two contracts. The bound reproduces the three examples above exactly: it is
 zero for a unitary channel, zero for dephasing because a unital channel never
 decreases entropy, and log q for the pure replacer.
 
-Proposition 7.5 (an interior corner). For 0<=gamma,p<=1 let Phi_(gamma,p) on
+Proposition 7.5 (an interior corner). For 0<=nu,p<=1 let Phi_(nu,p) on
 q=2 have the generalized amplitude damping operators
 
-`K_0=sqrt(p) diag(1,sqrt(1-gamma))`, `K_1=sqrt(p gamma) |0><1|`,
-`K_2=sqrt(1-p) diag(sqrt(1-gamma),1)`, `K_3=sqrt((1-p)gamma) |1><0|`,
+`K_0=sqrt(p) diag(1,sqrt(1-nu))`, `K_1=sqrt(p nu) |0><1|`,
+`K_2=sqrt(1-p) diag(sqrt(1-nu),1)`, `K_3=sqrt((1-p)nu) |1><0|`,
 
-which satisfy sum_a K_a* K_a=I. At gamma=1/2 and p=3/4,
+which satisfy sum_a K_a* K_a=I; the damping parameter is written nu to keep
+gamma for the concentration slack of Appendix A. At nu=1/2 and p=3/4,
 
-`0<1-H_2(5/8)<=kappa<=1-H_2(3/4)<H_2(3/8)<=h`,
+`0<H_2(7/12)-H_2(1/3)<=kappa<=1-H_2(3/4)<H_2(3/8)<=h`,
 
-that is 0.045566<=kappa<=0.188722 and h>=0.954434. Hence 0<kappa<h.
+that is 0.061572<=kappa<=0.188722 and h>=0.954434, each decimal rounded
+towards the side that keeps the inequality valid. Hence 0<kappa<h.
 
 Proof. Trace preservation is the diagonal identity
-p+(1-p)(1-gamma)+(1-p)gamma=1 and p(1-gamma)+p gamma+(1-p)=1.
-For the lower bound, Phi(I/2)=diag(5/8,3/8), so Proposition 7.4 at rho=I/2
-gives kappa>=1-H_2(5/8)>0 through the entropy-decrease budget credited there.
+p+(1-p)(1-nu)+(1-p)nu=1 and p(1-nu)+p nu+(1-p)=1.
+For the lower bound, the channel acts on diagonal inputs by
+Phi(diag(a,1-a))=diag(3/8+a/2,5/8-a/2), so rho=diag(7/12,5/12) has output
+exactly diag(2/3,1/3), and Proposition 7.4 at this rho gives
+kappa>=H_2(7/12)-H_2(1/3)>0 through the entropy-decrease budget credited
+there. The maximally mixed input, with Phi(I/2)=diag(5/8,3/8), gives only
+1-H_2(5/8)=0.04556..., and is not the maximiser of the bracket in
+Proposition 7.4; N. Mghirbi (private communication, 2026) observed that
+diag(3/5,2/5) already improves it to 0.061214. A numerical search over all
+qubit inputs, rerun by the script named in Appendix B.4, finds the maximum
+0.061598 at diag(0.58671,0.41329), so the rational witness above is within
+0.00003 of the best bound this proposition can give for the channel.
 
 For the upper bound, exhibit an exact collision. Take B=C^2, tau=diag(p,1-p),
 and the unitary U fixing |00> and |11> and acting on the ordered pair
 |01>,|10> by
 
-`[[sqrt(1-gamma),-i sqrt(gamma)],[-i sqrt(gamma),sqrt(1-gamma)]]`.
+`[[sqrt(1-nu),-i sqrt(nu)],[-i sqrt(nu),sqrt(1-nu)]]`.
 
 That block is unitary, so U is. Writing U=sum_(b,j) U_bj tensor |b><j| as
 in section 4, its weighted bath matrix elements sqrt(lambda_j) U_bj are
-U_00=diag(1,sqrt(1-gamma)), U_11=diag(sqrt(1-gamma),1),
-U_10=-i sqrt(gamma)|0><1| and U_01=-i sqrt(gamma)|1><0|, weighted by
+U_00=diag(1,sqrt(1-nu)), U_11=diag(sqrt(1-nu),1),
+U_10=-i sqrt(nu)|0><1| and U_01=-i sqrt(nu)|1><0|, weighted by
 sqrt(p) and sqrt(1-p); these are the four operators above up to individual
 phases, so Phi_C=Phi exactly. This is a lawful finite collision in the sense of
 Definition 1.4: tau is user independent, U acts on system and active bath
 only, and log dim B=1 with S(tau)=H_2(p). Because dim B=2, its active output
 entropy is at most one for EVERY input, whatever the off-diagonal entries, so
-g_C<=1-H_2(3/4). Theorems 3.1 and 4.1 give kappa=kappa_exact<=g_C.
+g_C<=1-H_2(3/4). This bound is attained: the input diag(1/4,3/4) sends the
+active bath output of this collision to I/2, so g_C=1-H_2(3/4) exactly and
+the witness cannot be improved. Theorems 3.1 and 4.1 give
+kappa=kappa_exact<=g_C.
 
 For h, the minimal dilation of a pure input has system and environment with
 the same nonzero spectrum, so h>=S(Phi(|1><1|))=H_2(3/8), since
-Phi(|1><1|)=diag(3/8,5/8). Strictness follows from H_2 being strictly
-increasing on (0,1/2): H_2(3/8)>H_2(1/4)=H_2(3/4)>1/2>1-H_2(3/4).
+Phi(|1><1|)=diag(3/8,5/8). A mixed input does better: at diag(1/3,2/3) the
+complementary output has entropy 1.148402 (also observed by N. Mghirbi; the
+numerical maximum is 1.148986 at diag(0.35586,0.64414)), so in fact h>1,
+although the analytic bound suffices here. Strictness follows from H_2 being
+strictly increasing on (0,1/2): H_2(3/8)>H_2(1/4)=H_2(3/4)>1/2>1-H_2(3/4).
 
 This locates the corner without computing kappa. Two consequences are already
 visible from the bracket. Since kappa>0, no device for this channel has a
@@ -1002,6 +1059,15 @@ identify every zero-gain collision: a SWAP with a maximally mixed bath has
 g=0 but returns the input state to the bath. No reverse closure implication
 is imported here.
 
+[Kotowski and Kotowski](https://arxiv.org/abs/2606.08784) implement a unital
+channel on a d-dimensional system with a fresh ancilla of dimension k and
+success probability of order k/log d, shown optimal up to constants, and
+simulate highly noncommutative channels with one auxiliary qubit. Their
+protocol may fail with a flag and draws a fresh ancilla at every use;
+Definition 1.1 removes both permissions, since the device must succeed at
+every visit with one bath that is never replenished, so neither cost measure
+bounds the other and nothing is imported.
+
 Dimension and entropy need not have the same minimizer in quantum models
 of classical stochastic processes, as shown by
 [Loomis and Crutchfield](https://arxiv.org/abs/1808.08639) and
@@ -1019,6 +1085,25 @@ closed implementation; combining them under this contract is what the paper
 adds. None of the works cited above states a rate region for the closed
 contract of Definition 1.1.
 
+## 9. Conclusion and open questions
+
+Under the closed contract a single-use dilation question becomes a rate region
+in two resources, bath dimension per use and initial entropy per use, with h
+fixing their sum and kappa fixing their difference. Three questions are left
+open here. Computability: kappa is an ordered limit of an infimum over
+extensions of unbounded dimension, and no algorithm, finite witness bound or
+continuity in Phi is asserted; Proposition 7.4 gives only a lower bound that
+is easy to evaluate, and Proposition 7.5 leaves a gap of a factor of about
+three between that bound and the exhibited upper bound. Efficiency: the
+all-horizon device of Theorem 5.1 is built from a witness that is not
+constructed, and no circuit-size or latency claim is made; the streaming
+realization for dephasing shows that some corners admit explicit efficient
+devices, and which channels do is open. The contract: immediate output return,
+one visit per input and a memoryless target are all load-bearing here. Devices
+that deliver outputs on a schedule rather than immediately, and testers with
+bounded persistent quantum memory rather than unrestricted references, are
+separate questions that this paper does not address.
+
 ## AI assistance
 
 AI systems assisted with proof exploration, manuscript preparation and checking.
@@ -1031,4 +1116,4 @@ of the separate, partial Lean verification is stated in Appendix B.4.
 [Appendix A](appendix-causal-balancing.md) is the complete proof of
 Theorem 5.1. [Appendix B](appendix-conventions.md) contains the normalization
 and register tables, the finite verification scope, and the bibliography.
-Together with sections 1--8 these are the complete paper.
+Together with sections 1--9 these are the complete paper.

@@ -39,7 +39,7 @@ assert len(labels) == len(set(labels)) and set(refs) <= set(labels)
 keys = re.findall(r"\\bibitem\{([^}]+)\}", tex)
 cites = {k.strip() for group in re.findall(r"\\cite(?:\[[^\]]*\])?\{([^}]+)\}", tex)
          for k in group.split(",")}
-assert len(keys) == len(set(keys)) == 33 and cites == set(keys)
+assert len(keys) == len(set(keys)) == 34 and cites == set(keys)
 assert len(re.findall(r"^\d+\. ", md, re.MULTILINE)) == len(keys)
 statements = set(re.findall(r"^(Theorem|Lemma|Proposition|Corollary|Definition) ([\dAB]+\.\d+)",
                             md, re.MULTILINE))
@@ -54,7 +54,7 @@ def inspect_pdf(path):
     assert reader.metadata.title == md.splitlines()[0].removeprefix("# ")
     assert reader.metadata.author == "Seth Douglas"
     pages = [p.extract_text() for p in reader.pages]
-    assert len(pages) == 28 and all(p.strip() for p in pages)
+    assert len(pages) == 29 and all(p.strip() for p in pages)
     flat = re.sub(r"\s+", " ", "\n".join(pages))
     assert "??" not in flat and "seth.douglas@gmail.com" in pages[0]
     for kind, number in statements:
@@ -92,9 +92,11 @@ assert release["license"] == "other-open"
 assert release["title"] == md.splitlines()[0].removeprefix("# ")
 assert release["creators"] == [{"name": "Douglas, Seth"}]
 assert release["upload_type"] == "publication" and release["publication_type"] == "preprint"
-assert all(term in release["description"] for term in ["CC-BY-4.0", "MIT", "partial"])
+assert release["version"] == "1.1.0"
+assert all(term in release["description"] for term in ["CC-BY-4.0", "MIT", "partial", "1.1.0"])
 citation = (root / "CITATION.cff").read_text(encoding="utf-8")
-assert citation.count("doi: 10.5281/zenodo.22779673") == 2
+assert citation.count("version: 1.1.0") == 2
+assert citation.count("doi: 10.5281/zenodo.2277967") == 2
 assert "repository-code: https://github.com/Apsiape/closed-quantum-process-memory-paper" in citation
 for name in expected:
     path = root / name
@@ -102,6 +104,6 @@ for name in expected:
         content = path.read_text(encoding="utf-8")
         assert all(line == line.rstrip() for line in content.splitlines()), name
 assert "HOLD" not in "\n".join(pages)
-print(f"PASS {len(expected)} hashes; complete proof; 23 statements; 33 references; {len(urls)} links; 28 pages")
+print(f"PASS {len(expected)} hashes; complete proof; 23 statements; 34 references; {len(urls)} links; 29 pages")
 print("PASS source provenance, clean metadata, scoped licenses and portable layout")
 print("PDF SHA256 " + sha(root / "manuscript.pdf"))

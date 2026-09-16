@@ -39,9 +39,10 @@ After ingestion, verify the displayed metadata. The editor can additionally
 display both scoped license entries. Dependencies and internal research reports
 are not included.
 
-The initial public release is version 1.0.0. Supply a genuine DOI only after
-assignment. The publication date is assigned by ingestion. No affiliation or
-ORCID is supplied.
+Version 1.1.0 (2026-09-16) supersedes 1.0.0 (2026-09-15); both are versions of
+one Zenodo concept record, 10.5281/zenodo.22779672. Supply a version DOI only
+after assignment. The publication date is assigned by ingestion. No affiliation
+or ORCID is supplied.
 
 Reference: https://help.zenodo.org/docs/deposit/describe-records/licenses/#mixed-license-uploads .
 Nothing here calls the API or creates a record.

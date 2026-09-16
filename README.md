@@ -76,12 +76,15 @@ rerun, and write new logs outside this distribution's checksummed files.
 
 ## Citation, licenses and provenance
 
-Use [CITATION.cff](CITATION.cff) for the manuscript citation. Version 1.0.0 is
-archived as [doi:10.5281/zenodo.22779673](https://doi.org/10.5281/zenodo.22779673).
-The [GitHub release](https://github.com/Apsiape/closed-quantum-process-memory-paper/releases/tag/v1.0.0)
-also provides the PDF directly. The release archive is immutable; subsequent
-citation-only updates on main do not change that deposited version.
-No affiliation or ORCID is asserted. The [Zenodo instructions](zenodo/README.md) explain the
+Use [CITATION.cff](CITATION.cff) for the manuscript citation. The concept DOI
+[10.5281/zenodo.22779672](https://doi.org/10.5281/zenodo.22779672) resolves to the
+latest archived version; version 1.0.0 is
+[doi:10.5281/zenodo.22779673](https://doi.org/10.5281/zenodo.22779673), and the
+version DOI of 1.1.0 is recorded in CITATION.cff once assigned. The
+[GitHub releases](https://github.com/Apsiape/closed-quantum-process-memory-paper/releases)
+also provide each PDF directly. Release archives are immutable; subsequent
+citation-only updates on main do not change a deposited version. No affiliation
+or ORCID is asserted. The [Zenodo instructions](zenodo/README.md) explain the
 aggregate Other (Open) category and explicit scoped licenses used for GitHub
 ingestion. Separate records or DOIs are not required.
 
@@ -97,3 +100,24 @@ No mathematical body text or distributed PDF bytes were changed for packaging.
 
 The checksum manifest covers distributed files only. Build products and caches
 are ignored; modified sources require a regenerated manifest and renewed checks.
+
+## Revision history
+
+- **1.1.0 (2026-09-16).** Proposition 7.5: the lower witness is now the exact
+  rational input diag(7/12, 5/12), giving `kappa >= H_2(7/12) - H_2(1/3) =
+  0.061572`. Version 1.0.0 displayed `0.045566` for the maximally mixed input, a
+  decimal rounded up from 0.0455659970..., so the stated lower bound exceeded
+  the proved one by three parts in a billion; the improvement of the witness was
+  observed by N. Mghirbi. The upper witness is shown to be attained, the
+  entropy-exchange lower bound is sharpened, Proposition 7.4 receives a direct
+  proof from Definition 1.3, the derivations of the constants in the proof of
+  Theorem 4.1 are written out (no constant changes), a small-error quantifier is
+  added at the stability display, Theorem 2.1 is restated unconditionally, a
+  conclusion section and one related-work comparison (Kotowski and Kotowski) are
+  added, notation collisions are resolved (Slepian-Wolf receiver `N`, damping
+  parameter `nu`), the exponents in Appendix A use parentheses instead of
+  brackets, and two bibliography identifiers are corrected. No theorem statement
+  changes. Three independent blind AI-session reviews of version 1.0.0 preceded
+  these repairs; they are not human peer review.
+- **1.0.0 (2026-09-15).** Initial release,
+  [doi:10.5281/zenodo.22779673](https://doi.org/10.5281/zenodo.22779673).
