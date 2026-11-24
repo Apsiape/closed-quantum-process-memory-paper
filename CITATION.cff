@@ -10,6 +10,10 @@ license:
   - MIT
 version: 1.1.0
 doi: 10.5281/zenodo.22788806
+identifiers:
+  - type: url
+    value: "https://arxiv.org/abs/2609.18267"
+    description: "arXiv preprint arXiv:2609.18267"
 repository-code: https://github.com/Apsiape/closed-quantum-process-memory-paper
 preferred-citation:
   type: unpublished

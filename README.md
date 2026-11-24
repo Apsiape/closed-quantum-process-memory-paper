@@ -2,6 +2,8 @@
 
 Seth Douglas | [seth.douglas@gmail.com](mailto:seth.douglas@gmail.com)
 
+arXiv: [arXiv:2609.18267](https://arxiv.org/abs/2609.18267)
+
 This preprint studies a closed device that supplies repeated uses of a fixed
 quantum channel against adaptive inputs. It charges both the entire bath
 dimension and the actual entropy of its initial state, including retained seeds,
